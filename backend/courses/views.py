@@ -1,10 +1,14 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework import generics
+
+from .models import Course
+from .serializers import CourseSerializer
 
 
-@api_view(["GET"])
-def course_list(request):
-    return Response({
-        "message": "Programming LMS API is working",
-        "courses": []
-    })
+class CourseListView(generics.ListAPIView):
+    queryset = Course.objects.filter(is_published=True)
+    serializer_class = CourseSerializer
+
+
+class CourseDetailView(generics.RetrieveAPIView):
+    queryset = Course.objects.filter(is_published=True)
+    serializer_class = CourseSerializer
