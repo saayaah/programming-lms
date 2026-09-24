@@ -1,14 +1,23 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import Courses from "./pages/Courses";
 import CourseDetails from "./pages/CourseDetails";
 import Lesson from "./pages/Lesson";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <BrowserRouter>
       <nav>
-        <Link to="/courses">Courses</Link>
+        <Link to="/courses">Courses</Link>{" "}
+        <Link to="/login">Login</Link>{" "}
+        <Link to="/dashboard">Dashboard</Link>
       </nav>
 
       <Routes>
@@ -24,6 +33,16 @@ function App() {
         <Route
           path="/courses/:courseId/lessons/:lessonId"
           element={<Lesson />}
+        />
+
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
         />
       </Routes>
     </BrowserRouter>
